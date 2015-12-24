@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
 before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+# allows for authentication for every action except index and show
+  http_basic_authenticate_with name: "jgp", password: "hallalujuah", except: [:index, :show]
+
 # This shows me a list of all the articles
   def index
     @articles = Article.all
